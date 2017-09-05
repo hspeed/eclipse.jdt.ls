@@ -63,6 +63,7 @@ import org.eclipse.jdt.core.search.SearchParticipant;
 import org.eclipse.jdt.core.search.SearchPattern;
 import org.eclipse.jdt.core.search.SearchRequestor;
 import org.eclipse.jdt.core.util.ClassFileBytesDisassembler;
+import org.eclipse.jdt.internal.corext.dom.IASTSharedValues;
 import org.eclipse.jdt.ls.core.internal.handlers.JsonRpcHelpers;
 import org.eclipse.jdt.ls.core.internal.managers.ProjectsManager;
 import org.eclipse.jface.text.BadLocationException;
@@ -219,7 +220,7 @@ public final class JDTUtils {
 		}
 		//TODO probably not the most efficient way to get the package name as this reads the whole file;
 		char[] source = fileContent.toCharArray();
-		ASTParser parser = ASTParser.newParser(SharedASTProvider.SHARED_AST_LEVEL);
+		ASTParser parser = ASTParser.newParser(IASTSharedValues.SHARED_AST_LEVEL);
 		parser.setProject(javaProject);
 		parser.setIgnoreMethodBodies(true);
 		parser.setSource(source);
